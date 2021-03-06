@@ -1,0 +1,26 @@
+directories:
+  output: build
+  buildResources: build
+  app: dist
+productName: ''
+appId: ''
+files: []
+mac:
+  icon: build/icons/icon.icns
+  target:
+    - target: zip
+  files: []
+win:
+  icon: build/icons/icon.ico
+  target:
+    - target: zip
+      arch:
+        - x64
+        - ia32
+  files: []
+linux:
+  icon: build/icons
+  target:
+    - target: tar.gz
+  files: []
+electronVersion: 11.3.0
