@@ -1,23 +1,36 @@
 <template>
-  <div class="app">
-    <router-view> </router-view>
+  <div class="app container">
+    <div class="row">
+      <div class="col-md-3 col-lg-3 col-sm-3 sidebar">
+        <Sidebar />
+      </div>
+      <div class="col-md-9 col-lg-9 col-sm-9">
+        <router-view> </router-view>
+      </div>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, onMounted } from 'vue';
 import { useNotes } from './hooks';
-
+import Sidebar from '/@/components/App/Sidebar.vue';
 export default defineComponent({
-  components: {},
+  components: {
+    Sidebar,
+  },
   setup() {
     const { getAllnotes, createNote } = useNotes();
     onMounted(async () => {
-      await createNote({ data: 'New note', meta: 'some meta data' });
+      // await createNote({ data: 'New note', meta: 'some meta data' });
       console.log(await getAllnotes());
     });
   },
 });
 </script>
 
-<style></style>
+<style lang="scss">
+.sidebar {
+  max-width: 100%;
+}
+</style>

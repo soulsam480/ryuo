@@ -1,0 +1,13 @@
+//todo color
+
+$primary: #274684;
+$secondary: #eaeff8;
+
+:root {
+  --priamry: $primary;
+  --secondary: $secondary;
+}
+html,
+body {
+  background-color: $secondary;
+}

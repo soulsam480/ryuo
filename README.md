@@ -22,3 +22,7 @@
 - SQLite 3
 
 The base repo is a fork of [@ci010/electron-vue-next](https://github.com/ci010/electron-vue-next). Almost perfect Electron, Vue 3 and Vite integration.
+
+### Why
+
+There are multiple complete and amazing projects which do exactly the same and better, but I wanted to measure my skills as a developer by creating a project like this. Just a hobby project to learn something new.
