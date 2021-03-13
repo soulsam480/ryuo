@@ -37,7 +37,10 @@ export const notesApi = {
   getAllnotes(): Promise<Notes[]> {
     return ipcRenderer.invoke('notes:getAll');
   },
-  createNote(args: { data: string; meta: string }): Promise<Notes> {
+  createNote(args: {
+    data: string;
+    meta: Record<string, any>;
+  }): Promise<Notes> {
     return ipcRenderer.invoke('notes:create', { ...args });
   },
   getNoteById(args: { id: string }): Promise<Notes[]> {
@@ -46,7 +49,7 @@ export const notesApi = {
   updateNote(args: {
     id: string;
     data: string;
-    meta: string;
+    meta: Record<string, any>;
   }): Promise<UpdateResult> {
     return ipcRenderer.invoke('notes:update', { ...args });
   },

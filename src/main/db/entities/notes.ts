@@ -15,8 +15,8 @@ export class Notes extends BaseEntity {
   @Column({ type: 'text', nullable: true })
   data: string;
 
-  @Column({ type: 'text', nullable: true })
-  meta: string;
+  @Column({ type: 'simple-json', nullable: true })
+  meta: Record<string, any>;
 
   @CreateDateColumn()
   createdAt: Date;

@@ -1,19 +1,30 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
+import { Notes } from '/@/../main/db/entities/notes';
+import { useNotes } from '/@/hooks';
 
 export default defineComponent({
   name: 'Sidebar',
   setup() {
-    const state = ref();
-
-    return { state };
+    const notes = ref<Notes[]>([]);
+    const { getAllnotes } = useNotes();
+    (async () => {
+      notes.value = await getAllnotes();
+    })();
+    return { notes };
   },
 });
 </script>
 
 <template>
   <div class="r-sidebar-container">
-    <a href="j">kjn </a>
+    <div class="r-sidenav__outline">
+      <div class="r-sidenav__link" v-for="note in notes" :key="note.id">
+        <router-link :to="`/note/${note.id}`">{{
+          note.meta.title
+        }}</router-link>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -28,20 +39,8 @@ export default defineComponent({
   z-index: 100;
   top: 0;
   left: 0;
-  // background-color: var(--secondary);
   overflow-x: hidden;
   padding-bottom: 20px;
-  a:not(.user-link) {
-    cursor: pointer;
-    padding: 6px 8px 6px 16px;
-    display: block;
-    color: var(--primary);
-    white-space: nowrap;
-    &:hover {
-      cursor: pointer;
-      // background-color: $secondary-light !important;
-      // color: $primary !important;
-    }
-  }
+  border-right: 1px solid var(--primary-50);
 }
 </style>

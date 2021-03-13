@@ -11,7 +11,7 @@ ipcMain.handle('notes:getById', async (e, args: { id: string }) => {
 
 ipcMain.handle(
   'notes:create',
-  async (e, args: { data: string; meta: string }) => {
+  async (e, args: { data: string; meta: Record<string, any> }) => {
     const note = Notes.create({ ...args });
     return await Notes.save(note);
   },
@@ -19,7 +19,7 @@ ipcMain.handle(
 
 ipcMain.handle(
   'notes:update',
-  async (e, args: { data: string; meta: string; id: string }) => {
+  async (e, args: { data: string; meta: Record<string, any>; id: string }) => {
     return await Notes.update(
       {
         id: args.id,

@@ -1,13 +1,52 @@
 //todo color
 
 $primary: #274684;
+$primary-20: mix(white, $primary, 20%);
+$primary-40: mix(white, $primary, 40%);
+$primary-50: mix(white, $primary, 50%);
 $secondary: #eaeff8;
 
 :root {
-  --priamry: $primary;
-  --secondary: $secondary;
+  --primary: #{$primary};
+  --secondary: #{$secondary};
+  --primary-20: #{$primary-20};
+  --primary-40: #{$primary-40};
+  --primary-50: #{$primary-50};
+  // --secondary-light: $secondary-light;
 }
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('../assets/SourceSansPro-Regular.woff2') format('woff2'),
+    url('../assets/SourceSansPro-Regular.woff') format('woff');
+}
+
 html,
 body {
   background-color: $secondary;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+//desktop media queries
+@media only screen and (min-wdth: 768px) {
+  .r-container {
+    margin-left: 250px;
+  }
+}
+
+.r-sidenav {
+  &__outline {
+    padding-left: 4px;
+  }
+  &__link {
+    cursor: pointer;
+    padding: 4px 8px 4px 16px;
+    display: block;
+    color: black;
+    white-space: nowrap;
+    &:hover {
+      cursor: pointer;
+      // background-color: $primary-50;
+      // color: $primary !important;
+    }
+  }
 }
